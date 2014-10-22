@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>MS Paint Gallery</title>
+    <link rel="stylesheet" href="assets/main.css">
+</head>
+<body>
+<section id="main">
+
+      <script type="text/template" id="item-template">
+          <% _.each(theItems, function(item) { %>
+        <p> <%= item.get("price") %> </p>
+        <p> <%= item.get("title") %> </p>
+                  <% var t = item.get("order");
+                     var img = "assets/img/" + t + ".png"; %>
+        <img src="<%= img %>">
+          <% }); %>
+      </script>
+
+   <div id="target"></div>
+
+</section>
+  <script src="js/lib/underscore-min.js"></script>
+  <script src="js/lib/jquery-1.11.1.min.js"></script>
+  <script src="js/lib/backbone-min.js"></script>
+  <script src="js/models/item.js"></script>
+  <script src="js/views/appView.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

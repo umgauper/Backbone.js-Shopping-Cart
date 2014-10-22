@@ -1,0 +1,11 @@
+img {
+    transform: scale(0.5, 0.5);
+    -moz-transform: scale(0.5, 0.5);
+    -webkit-transform: scale(0.5, 0.5);
+    border:10px solid transparent;
+    border-radius: 50px;
+}
+
+#cart {
+    border: 10px solid #95BF15;
+}

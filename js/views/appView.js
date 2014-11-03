@@ -1,19 +1,12 @@
 // js/views/appView.js
 
-// The View...
+// The View... Logic for overall app view, not individual DOM elements...
 
-var app = app || {};
+//var app = app || {};
 
-app.appView = Backbone.View.extend({
-    el: '#main',
-    events: {
-        'dblclick img': 'addToCart'
-    },
-    addToCart: function() {
-        alert(this.get); // returns [Object object] ... I think I have to use render to create an instance of the view, passing each model...to connect each Model to its DOM element?
-        this.set({inCart: true});
-    }
-});
+//app.appView = Backbone.View.extend({
 
-var template = _.template($("#item-template").html()); // pre-compile the template
-$("#target").after(template(Item));
+
+//});
+
+

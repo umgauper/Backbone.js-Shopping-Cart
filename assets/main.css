@@ -1,11 +1,63 @@
+@import url(http://fonts.googleapis.com/css?family=ABeeZee);
+
+body {
+    font-family: ABeeZee;
+    width: 100%;
+    margin: 0px;
+    color:  rgb(40, 30, 46);
+}
 img {
-    transform: scale(0.5, 0.5);
-    -moz-transform: scale(0.5, 0.5);
-    -webkit-transform: scale(0.5, 0.5);
+    height:100px;
+    width:100px;
+    margin-left:40px;
     border:10px solid transparent;
     border-radius: 50px;
 }
 
-#cart {
-    border: 10px solid #95BF15;
+header {
+    background-color: rgb(40, 30, 46);
+    height:100px;
+    width:100%;
+    margin-bottom: 50px;
+    color: rgb(219, 232, 160);
+}
+
+div.item {
+    display:inline-block;
+    width:200px;
+    height:200px;
+    border-top:40px solid rgb(83, 127, 188);
+    border-right:2px solid rgb(219, 232, 160);
+
+}
+
+.qty {
+    width: 25px;
+    height: 25px;
+}
+p.title, p.price {
+    width:100px;
+    margin-left: 50px;
+    margin-right: auto;
+    text-align: center;
+}
+
+button.addToCart {
+    background-color: rgb(219, 116, 72);
+    height: 30px;
+    border: 1px solid transparent;
+    border-radius: 50px;
+}
+
+table, #display {
+    display: inline-block;
+}
+table#cart {
+    width: 300px;
+    border: 10px solid rgb(219, 232, 160);
+    height: 300px;
+}
+footer {
+    background-color: rgb(170, 212, 232);
+    height: 100px;
 }

@@ -9,20 +9,18 @@ var Item = Backbone.Model.extend({
         inCart: false,
         title: ''
 
-    },
-    initialize: function() {
-        console.log("app has been initialized");
-
     }
+
 });
 
 
-var item1 = new Item({order: 1, price: 30.00});
-var item2 = new Item({order: 2, price: 5.00});
-var item3 = new Item({order: 3, price: 20.00});
-var item4 = new Item({order: 4, price: 20.00});
-var item5 = new Item({order: 5, price: 30.00});
-var theItems = [];             // Only way I could get the template to work was by putting the items into an array. Surely there's a better way to do this?
-theItems.push(item1, item2, item3, item4, item5);
+var item1 = new Item({order: 1, title: "Margaret", price: 30.00});
+var item2 = new Item({order: 2, title: "John", price: 5.00});
+var item3 = new Item({order: 3, title: "Eve", price: 20.00});
+var item4 = new Item({order: 4, title: "Rebecca", price: 20.00});
+var item5 = new Item({order: 5, title: "Jen", price: 30.00});
 
+var ItemsCollection = Backbone.Collection.extend({model: Item});
+
+var items = new ItemsCollection([item1, item2, item3, item4, item5]);
 

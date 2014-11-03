@@ -6,25 +6,37 @@
     <link rel="stylesheet" href="assets/main.css">
 </head>
 <body>
-<section id="main">
+  <header>
+      <img src="assets/img/logo.png">
+      ART WORLD
+  </header>
+  <div id="container">
+  <div id="display">
 
-      <script type="text/template" id="item-template">
-          <% _.each(theItems, function(item) { %>
-        <p> <%= item.get("price") %> </p>
-        <p> <%= item.get("title") %> </p>
-                  <% var t = item.get("order");
-                     var img = "assets/img/" + t + ".png"; %>
-        <img src="<%= img %>">
-          <% }); %>
-      </script>
+  </div>
+  <table id="cart">
+      <thead>
+        <th>Title</th>
+        <th>Price</th>
+      </thead>
 
-   <div id="target"></div>
+  </table>
+  </div>
+  <footer></footer>
+  <script type="text/template" id="item-template">
+        <p class="title"><%= title %></p>
+        <img src=assets/img/<%= order %>.png>
+        <p class="price">$<%= price %>.00</p>
 
-</section>
+        <button class="addToCart">Add to Cart</button>
+        <input type="text" class="qty" placeholder="qty">
+  </script>
+
   <script src="js/lib/underscore-min.js"></script>
   <script src="js/lib/jquery-1.11.1.min.js"></script>
   <script src="js/lib/backbone-min.js"></script>
   <script src="js/models/item.js"></script>
+  <script src="js/views/itemView.js"></script>
   <script src="js/views/appView.js"></script>
   <script src="js/app.js"></script>
 </body>

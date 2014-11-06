@@ -1,30 +1,44 @@
 app.ItemView = Backbone.View.extend({
+    className: 'item',
     template: _.template($("#item-template").html()),
     initialize: function() {
-        this.render()
+        this.render();
     },
     render: function() {
         this.$el.append(this.template(this.model.toJSON()));
         $("#display").append(this.el);
         return this;
     },
-    events: {
-        'click .addToCart': 'moveToCart'
-    },
-    moveToCart: function(e) {
-        var title = this.model.get("title");
-        var price = this.model.get("price");
+   events: {
+        'click .addToCart': 'addToCart'
+
+   },
+
+    addToCart: function() {
+        $("tbody").empty();                             // each item in cart should have its own cart view, change addToCart to instantiate a cartItem View, passing {model: this.model}, so
+                                                        // both views point to the same model. then, give each cartItem view a delete button, and maybe the ability to edit the quantity
+                                                        // by clicking the quantity in the cart?
+        $("#totalCost").empty();
+        this.model.set({inCart: true});
         var theDivID = this.id;
-        var qty = $("#" + theDivID + " input").val();
-        $("table").append("<tr><td>" + title + "</td><td>" + price + "</td><td>" + qty + "</td></tr>");
-        this.model.set({inCart: !this.model.get("inCart")});
-    }
+        var qty = parseInt($("#" + theDivID + " input").val()) || 1;
+        var newQty = qty + this.model.get("qty");
+        this.model.set({qty: newQty});
+        this.model.set({subtotal: newQty * this.model.get("price")});
+        var template = _.template($("#cart-item-template").html());
+        _.each(app.items.inCart(), function(item) {
+            $("tbody").append(template(item.toJSON()));
+
+        });
+        $("#totalCost").append("Total: " + app.items.totalCost());
+        }
+
+
 });
 
-
-var itemView1 = new app.ItemView({model: item1, className: 'item', id: 'item1'});
-var itemView2 = new app.ItemView({model: item2, className: 'item', id: 'item2'});
-var itemView3 = new app.ItemView({model: item3, className: 'item', id: 'item3'});
-var itemView4 = new app.ItemView({model: item4, className: 'item', id: 'item4'});
-var itemView5 = new app.ItemView({model: item5, className: 'item', id: 'item5'});
+app.itemView1 = new app.ItemView({model: app.item1, id: 'item1'});
+app.itemView2 = new app.ItemView({model: app.item2, id: 'item2'});
+app.itemView3 = new app.ItemView({model: app.item3, id: 'item3'});
+app.itemView4 = new app.ItemView({model: app.item4, id: 'item4'});
+app.itemView5 = new app.ItemView({model: app.item5, id: 'item5'});
 

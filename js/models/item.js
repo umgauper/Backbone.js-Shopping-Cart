@@ -1,26 +1,43 @@
 //js/models/item.js
 
 // The models. Each art piece for sale is a model.
-var app = app || {};
-var Item = Backbone.Model.extend({
+var app = {};
+app.item = Backbone.Model.extend({
     defaults: {
         order: '',
+        title: '',
         price: 0.01,
         inCart: false,
-        title: ''
+        qty: 0,
+        subtotal: 0
 
     }
 
 });
 
+app.item1 = new app.item({order: 1, title: "Margaret", price: 30.00});
+app.item2 = new app.item({order: 2, title: "John", price: 25.00});
+app.item3 = new app.item({order: 3, title: "Eve", price: 20.00});
+app.item4 = new app.item({order: 4, title: "Rebecca", price: 20.00});
+app.item5 = new app.item({order: 5, title: "Jen", price: 30.00});
 
-var item1 = new Item({order: 1, title: "Margaret", price: 30.00});
-var item2 = new Item({order: 2, title: "John", price: 5.00});
-var item3 = new Item({order: 3, title: "Eve", price: 20.00});
-var item4 = new Item({order: 4, title: "Rebecca", price: 20.00});
-var item5 = new Item({order: 5, title: "Jen", price: 30.00});
+app.itemsCollection = Backbone.Collection.extend({ // move this to its own file stored in js/collections!
+    model: app.item,
+    inCart: function() {
+        return this.filter(function (item) {
+            return item.get("inCart");
+        });
+    },
+    totalCost: function() {
+        var totalCost = 0;
+        _.each(app.items.inCart(), function(item) {
+            totalCost += item.get("subtotal");
+            });
+        return totalCost;
+        }
+});
 
-var ItemsCollection = Backbone.Collection.extend({model: Item});
+app.items = new app.itemsCollection();
+app.items.add([app.item1, app.item2, app.item3, app.item4, app.item5]);
 
-var items = new ItemsCollection([item1, item2, item3, item4, item5]);
 

@@ -18,7 +18,18 @@
       <thead>
         <th>Title</th>
         <th>Price</th>
+        <th>Qty</th>
+        <th>Subtotal</th>
       </thead>
+      <tbody></tbody>
+      <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td id="totalCost"></td>
+        </tr>
+      </tfoot>
 
   </table>
   </div>
@@ -30,6 +41,14 @@
 
         <button class="addToCart">Add to Cart</button>
         <input type="text" class="qty" placeholder="qty">
+  </script>
+  <script type="text/template" id="cart-item-template">
+      <tr>
+          <td><%= title %></td>
+          <td><%= price %></td>
+          <td><%= qty %></td>
+          <td><%= subtotal %></td>
+      </tr>
   </script>
 
   <script src="js/lib/underscore-min.js"></script>

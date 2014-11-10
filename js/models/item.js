@@ -21,23 +21,4 @@ app.item3 = new app.item({order: 3, title: "Eve", price: 20.00});
 app.item4 = new app.item({order: 4, title: "Rebecca", price: 20.00});
 app.item5 = new app.item({order: 5, title: "Jen", price: 30.00});
 
-app.itemsCollection = Backbone.Collection.extend({ // move this to its own file stored in js/collections!
-    model: app.item,
-    inCart: function() {
-        return this.filter(function (item) {
-            return item.get("inCart");
-        });
-    },
-    totalCost: function() {
-        var totalCost = 0;
-        _.each(app.items.inCart(), function(item) {
-            totalCost += item.get("subtotal");
-            });
-        return totalCost;
-        }
-});
-
-app.items = new app.itemsCollection();
-app.items.add([app.item1, app.item2, app.item3, app.item4, app.item5]);
-
 

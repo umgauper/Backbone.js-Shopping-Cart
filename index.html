@@ -6,34 +6,30 @@
     <link rel="stylesheet" href="assets/main.css">
 </head>
 <body>
-  <header>
-      <img src="assets/img/logo.png">
-      ART WORLD
-  </header>
-  <div id="container">
-  <div id="display">
+<div id="container">
+      <div id="display">
+      </div>
+      <div id="tablediv">
+          <table id="cart">
+              <thead>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th id="subtotal">Subtotal</th>
+              </thead>
+              <tbody></tbody>
+              <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td id="totalCost"></td>
+                </tr>
+              </tfoot>
+          </table>
+      </div>
 
-  </div>
-  <table id="cart">
-      <thead>
-        <th>Title</th>
-        <th>Price</th>
-        <th>Qty</th>
-        <th>Subtotal</th>
-      </thead>
-      <tbody></tbody>
-      <tfoot>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td id="totalCost"></td>
-        </tr>
-      </tfoot>
-
-  </table>
-  </div>
-  <footer></footer>
+</div>
   <script type="text/template" id="item-template">
         <p class="title"><%= title %></p>
         <img src=assets/img/<%= order %>.png>
@@ -43,18 +39,21 @@
         <input type="text" class="qty" placeholder="qty">
   </script>
   <script type="text/template" id="cart-item-template">
-      <tr>
+
           <td><%= title %></td>
-          <td><%= price %></td>
+          <td>$<%= price %>.00</td>
           <td><%= qty %></td>
-          <td><%= subtotal %></td>
-      </tr>
+          <td>$<%= subtotal %>.00</td>
+          <td><button class="remove">X</button></td>
+
   </script>
 
   <script src="js/lib/underscore-min.js"></script>
   <script src="js/lib/jquery-1.11.1.min.js"></script>
   <script src="js/lib/backbone-min.js"></script>
   <script src="js/models/item.js"></script>
+  <script src="js/collections/itemsCollection.js"></script>
+  <script src="js/views/cartItemView.js"></script>
   <script src="js/views/itemView.js"></script>
   <script src="js/views/appView.js"></script>
   <script src="js/app.js"></script>
